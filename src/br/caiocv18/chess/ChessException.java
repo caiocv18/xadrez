@@ -1,6 +1,8 @@
 package br.caiocv18.chess;
 
-public class ChessException extends RuntimeException{
+import br.caiocv18.boardgame.BoardException;
+
+public class ChessException extends BoardException{
     private static final long serialVersionID = 1L;
 
     public ChessException(String msg){

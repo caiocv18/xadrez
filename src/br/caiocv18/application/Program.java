@@ -1,8 +1,10 @@
 package br.caiocv18.application;
 
-import br.caiocv18.boardgame.Board;
-import br.caiocv18.boardgame.Position;
+import java.util.Scanner;
+
 import br.caiocv18.chess.ChessMatch;
+import br.caiocv18.chess.ChessPiece;
+import br.caiocv18.chess.ChessPosition;
 
 /**
  * Program
@@ -10,12 +12,21 @@ import br.caiocv18.chess.ChessMatch;
 public class Program {
 
     public static void main(String[] args) {
-        Position pos = new Position(3, 5);
-        System.out.println(pos);
-
-        Board board = new Board(8,8);
-
+        
+        Scanner sc = new Scanner(System.in);
         ChessMatch chessMatch = new ChessMatch();
-        UI.printBoard(chessMatch.getPieces());
+        
+        while (true) {
+			UI.printBoard(chessMatch.getPieces());
+			System.out.println();
+			System.out.print("Source: ");
+			ChessPosition source = UI.readChessPosition(sc);
+
+			System.out.println();
+			System.out.print("Target: ");
+			ChessPosition target = UI.readChessPosition(sc);
+
+			ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
+		}
     }
 }
