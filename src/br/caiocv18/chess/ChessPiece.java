@@ -2,6 +2,7 @@ package br.caiocv18.chess;
 
 import br.caiocv18.boardgame.Board;
 import br.caiocv18.boardgame.Piece;
+import br.caiocv18.boardgame.Position;
 
 public abstract class ChessPiece extends Piece {
 
@@ -15,4 +16,9 @@ public abstract class ChessPiece extends Piece {
     public Color getColor() {
         return color;
     }
+
+    protected boolean isThereOpponentPiece(Position position) {
+		ChessPiece p = (ChessPiece)getBoard().piece(position);
+		return p != null && p.getColor() != color;
+	}
 }
